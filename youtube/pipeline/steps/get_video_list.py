@@ -14,12 +14,8 @@ class GetVideoList(Step):
         video_links = []
         url = first_url
         while True:
-            try:
-                inp = urllib.request.urlopen(url)
-                resp = json.load(inp)
-
-            except:
-                raise StepException  # raise: 自己寫的Exception
+            inp = urllib.request.urlopen(url)
+            resp = json.load(inp)
 
             for i in resp['items']:
                 if i['id']['kind'] == "youtube#video":
